@@ -27,7 +27,7 @@
         <AnchorPane fx:id="wrapperOfGridPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
             <children>
 
-                <GridPane fx:id="visualizationGridPane" layoutX="8.0" layoutY="7.0" prefHeight="344.0" prefWidth="495.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                <GridPane fx:id="visualizationGridPane" layoutX="8.0" layoutY="7.0" prefHeight="344.0" prefWidth="495.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
