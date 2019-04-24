@@ -28,10 +28,7 @@ import java.util.ResourceBundle;
 public class RulesVisualizationController implements Initializable {
 
     @FXML
-    GridPane visualizationGridPane;
-
-    @FXML
-    AnchorPane wrapperOfGridPane;
+    private GridPane visualizationGridPane;
 
     @FXML
     private Spinner<Integer> sizeN;
@@ -39,25 +36,21 @@ public class RulesVisualizationController implements Initializable {
     @FXML
     private Spinner<Integer> sizeM;
 
+    @FXML
+    private Button updateSizeButton;
 
     @FXML
-    Button updateSizeButton;
+    private ChoiceBox<Rules> rulesChoiceBox;
 
-    @FXML
-    ChoiceBox<Rules> rulesChoiceBox;
+    private RulesCalculator rulesCalculator;
+    private ObservableList<ObservableList<Integer>> arrayRules;
 
-    RulesCalculator rulesCalculator;
-    ObservableList<ObservableList<Integer>> arrayRules;
-
-    double defaultWidth = 0;
-    double defaultHeight = 0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         rulesCalculator = new RulesCalculator();
-        ObservableList<Rules> availableChoices = FXCollections.observableArrayList(Rules.values());
-        sizeM.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 1000));
-        sizeN.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 1000));
-        rulesChoiceBox.setItems(availableChoices);
+        sizeM.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 100));
+        sizeN.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 100));
+        rulesChoiceBox.setItems(FXCollections.observableArrayList(Rules.values()));
         rulesChoiceBox.getSelectionModel()
                 .selectedItemProperty()
                 .addListener( (ObservableValue<? extends Rules> observable, Rules oldValue, Rules newValue) -> {
@@ -70,9 +63,9 @@ public class RulesVisualizationController implements Initializable {
 
     private void updateVisualization() {
         System.out.println("updateVisualization");
-
         resizeVisualization();
         setColorsOnRectangles();
+        rulesChoiceBox.setValue(null);
     }
     private void setColorsOnRectangles()
     {
@@ -98,7 +91,7 @@ public class RulesVisualizationController implements Initializable {
         while(visualizationGridPane.getColumnConstraints().size() > 0){
             visualizationGridPane.getColumnConstraints().remove(0);
         }
-        visualizationGridPane.resize(500,500);
+        visualizationGridPane.resize(300,300);
         double width = 100./ arrayRules.get(0).size();
         double height = 100./ arrayRules.size();
         for (int i = 0; i < arrayRules.get(0).size(); i++) {
@@ -138,8 +131,5 @@ public class RulesVisualizationController implements Initializable {
 
         }
         arrayRules.get(0).set(sizeM.getValue()/2,1);
-        arrayRules.addListener((ListChangeListener<ObservableList<Integer>>) c -> System.out.println("Changed on:" + c));
     }
 }
-
-

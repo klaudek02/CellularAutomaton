@@ -87,8 +87,8 @@ public class RulesCalculator {
             {
                 periodicCondition(j,array.get(0).size());
                 if ((array.get(i-1).get(y2) == array.get(i-1).get(j) && array.get(i-1).get(y1) == array.get(i-1).get(y2))
-                        || (array.get(i-1).get(y2) == 1 && array.get(i-1).get(j) == 1 && array.get(i-1).get(y2) == 0)
-                        || (array.get(i-1).get(y2) == 1 &&array.get(i-1).get(j) == 0 && array.get(i-1).get(y2) == 1))
+                        || (array.get(i-1).get(y1) == 1 && array.get(i-1).get(j) == 1 && array.get(i-1).get(y2) == 0)
+                        || (array.get(i-1).get(y1) == 1 &&array.get(i-1).get(j) == 0 && array.get(i-1).get(y2) == 1))
                     array.get(i).set(j,1);
                 else
                     array.get(i).set(j,0);
