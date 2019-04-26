@@ -48,8 +48,8 @@ public class RulesVisualizationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         rulesCalculator = new RulesCalculator();
-        sizeM.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 100));
-        sizeN.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 100));
+        sizeM.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
+        sizeN.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
         rulesChoiceBox.setItems(FXCollections.observableArrayList(Rules.values()));
         rulesChoiceBox.getSelectionModel()
                 .selectedItemProperty()
@@ -118,7 +118,6 @@ public class RulesVisualizationController implements Initializable {
             }
     }
 
-
     private void initializeArray()
     {
         arrayRules = FXCollections.observableArrayList();
@@ -128,7 +127,6 @@ public class RulesVisualizationController implements Initializable {
             for (int j = 0; j < sizeM.getValue(); j++) {
                 row.add(0);
             }
-
         }
         arrayRules.get(0).set(sizeM.getValue()/2,1);
     }
