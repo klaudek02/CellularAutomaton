@@ -15,8 +15,8 @@
     <top>
         <AnchorPane prefHeight="41.0" prefWidth="600.0" style="-fx-background-color: pink;" BorderPane.alignment="CENTER">
             <children>
-                <Spinner id="sizeN" fx:id="sizeN" layoutX="25.0" layoutY="9.0" prefHeight="25.0" prefWidth="63.0" />
-                <Spinner fx:id="sizeM" layoutX="94.0" layoutY="10.0" prefHeight="25.0" prefWidth="63.0" />
+                <Spinner fx:id="sizeN" editable="true" layoutX="25.0" layoutY="9.0" prefHeight="25.0" prefWidth="63.0" />
+                <Spinner fx:id="sizeM" editable="true" layoutX="94.0" layoutY="10.0" prefHeight="25.0" prefWidth="63.0" />
                 <Button fx:id="updateSizeButton" layoutX="174.0" layoutY="9.0" mnemonicParsing="false" text="Update" />
                 <Separator layoutX="289.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="46.0" prefWidth="6.0" />
                 <ChoiceBox fx:id="rulesChoiceBox" layoutX="324.0" layoutY="9.0" prefWidth="150.0" />
@@ -24,7 +24,7 @@
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane fx:id="wrapperOfGridPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+        <AnchorPane fx:id="wrapperOfGridPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink;" BorderPane.alignment="CENTER">
             <children>
 
                 <GridPane fx:id="visualizationGridPane" layoutX="8.0" layoutY="7.0" prefHeight="344.0" prefWidth="495.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
