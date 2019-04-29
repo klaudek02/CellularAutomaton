@@ -48,8 +48,8 @@ public class RulesVisualizationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         rulesCalculator = new RulesCalculator();
-        sizeM.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
-        sizeN.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
+        sizeM.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 500));
+        sizeN.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 500));
         rulesChoiceBox.setItems(FXCollections.observableArrayList(Rules.values()));
         rulesChoiceBox.getSelectionModel()
                 .selectedItemProperty()
@@ -62,23 +62,22 @@ public class RulesVisualizationController implements Initializable {
     }
 
     private void updateVisualization() {
-        System.out.println("updateVisualization");
         resizeVisualization();
         setColorsOnRectangles();
         rulesChoiceBox.setValue(null);
     }
     private void setColorsOnRectangles()
     {
-        FilteredList<Node> rectangles = visualizationGridPane.getChildren().filtered(n -> n instanceof Rectangle);
+        FilteredList<Node> rectangles = visualizationGridPane.getChildren().filtered(n -> n instanceof StackPane);
         for(int i = 0; i < arrayRules.size(); i++)
         {
             for(int j = 0; j < arrayRules.get(0).size();j++)
             {
-                Rectangle rectangle = (Rectangle) rectangles.get(i*arrayRules.get(0).size() + j);
+                StackPane rectangle = (StackPane) rectangles.get(i*arrayRules.get(0).size() + j);
                 if(arrayRules.get(i).get(j) == 1)
-                    rectangle.setFill(Color.BLACK);
+                    rectangle.setStyle("-fx-background-color: black; -fx-border-color: black");
                 else
-                    rectangle.setFill(Color.WHITE);
+                    rectangle.setStyle("-fx-background-color: white; -fx-border-color: black");
             }
         }
     }
@@ -91,29 +90,27 @@ public class RulesVisualizationController implements Initializable {
         while(visualizationGridPane.getColumnConstraints().size() > 0){
             visualizationGridPane.getColumnConstraints().remove(0);
         }
-        visualizationGridPane.resize(300,300);
-        double width = 100./ arrayRules.get(0).size();
+       // ?/visualizationGridPane.resize(20,20);
+        double sizee = 0;
+        double width =  100./ arrayRules.get(0).size();
         double height = 100./ arrayRules.size();
+        sizee = width > height ? height : width;  // to change
         for (int i = 0; i < arrayRules.get(0).size(); i++) {
             ColumnConstraints colConst = new ColumnConstraints();
             colConst.setHgrow(Priority.ALWAYS);
-            colConst.setPercentWidth(width);
+            colConst.setPercentWidth(sizee);
             visualizationGridPane.getColumnConstraints().add(colConst);
         }
         for(int i = 0; i < arrayRules.size(); i++){
             RowConstraints rowConst = new RowConstraints();
             rowConst.setVgrow(Priority.ALWAYS);
-            rowConst.setPercentHeight(height);
+            rowConst.setPercentHeight(sizee);
             visualizationGridPane.getRowConstraints().add(rowConst);
         }
 
         for(int i = 0; i < arrayRules.size(); i++)
             for(int j = 0; j <arrayRules.get(0).size(); j++){
-                Rectangle square = new Rectangle();
-                square.setStrokeType(StrokeType.INSIDE);
-                square.setStroke(Color.BLACK);
-                square.widthProperty().bind(visualizationGridPane.widthProperty().divide(arrayRules.get(0).size()));
-                square.heightProperty().bind(visualizationGridPane.heightProperty().divide(arrayRules.size()));
+                StackPane square = new StackPane();
                 visualizationGridPane.add(square,j,i);
             }
     }

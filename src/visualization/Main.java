@@ -14,7 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("MultiscaleModelling");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.setWidth(700);
-        primaryStage.setHeight(500);
+        primaryStage.setHeight(700);
         primaryStage.setResizable(true);
         primaryStage.setX(0);
         primaryStage.setY(0);
