@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visualization.RulesVisualizationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visualization.RulesVisualizationController">
     <top>
         <AnchorPane prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: pink;" BorderPane.alignment="CENTER">
             <children>
@@ -26,16 +26,10 @@
     <center>
         <AnchorPane fx:id="wrapperOfGridPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink;" BorderPane.alignment="CENTER">
             <children>
-
-                <GridPane fx:id="visualizationGridPane" layoutX="8.0" layoutY="7.0" prefHeight="344.0" prefWidth="495.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
+                <GridPane fx:id="visualizationGridPane" layoutX="8.0" layoutY="7.0"  style="-fx-background-color: white;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
                     <columnConstraints>
-                        <ColumnConstraints />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints />
                     </rowConstraints>
                 </GridPane>
             </children>

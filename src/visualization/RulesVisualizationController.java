@@ -2,8 +2,6 @@ package visualization;
 
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -12,16 +10,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeType;
-import javafx.util.converter.NumberStringConverter;
 
 
 
 import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -58,7 +52,8 @@ public class RulesVisualizationController implements Initializable {
                     setColorsOnRectangles();
                    });
         updateSizeButton.setOnAction((e)->{initializeArray();updateVisualization();});
-        updateSizeButton.fire();
+
+        System.out.println(visualizationGridPane.getHeight());
     }
 
     private void updateVisualization() {
@@ -75,9 +70,9 @@ public class RulesVisualizationController implements Initializable {
             {
                 StackPane rectangle = (StackPane) rectangles.get(i*arrayRules.get(0).size() + j);
                 if(arrayRules.get(i).get(j) == 1)
-                    rectangle.setStyle("-fx-background-color: black; -fx-border-color: black");
+                    rectangle.setStyle("-fx-background-color: black; -fx-border-color: black;-fx-border-width: 0.1px");
                 else
-                    rectangle.setStyle("-fx-background-color: white; -fx-border-color: black");
+                    rectangle.setStyle("-fx-background-color: white; -fx-border-color: black;-fx-border-width: 0.1px");
             }
         }
     }
@@ -90,8 +85,8 @@ public class RulesVisualizationController implements Initializable {
         while(visualizationGridPane.getColumnConstraints().size() > 0){
             visualizationGridPane.getColumnConstraints().remove(0);
         }
-       // ?/visualizationGridPane.resize(20,20);
-        double sizee = 0;
+       //visualizationGridPane.resize(20,20);
+     /*   double sizee = 0;
         double width =  100./ arrayRules.get(0).size();
         double height = 100./ arrayRules.size();
         sizee = width > height ? height : width;  // to change
@@ -107,10 +102,14 @@ public class RulesVisualizationController implements Initializable {
             rowConst.setPercentHeight(sizee);
             visualizationGridPane.getRowConstraints().add(rowConst);
         }
-
+*/
+    double width = (visualizationGridPane.getWidth()/(double)sizeM.getValue());
+    double height = visualizationGridPane.getHeight()/(double)sizeN.getValue();
+    double size = (width>height?height:width)-0.2;
         for(int i = 0; i < arrayRules.size(); i++)
             for(int j = 0; j <arrayRules.get(0).size(); j++){
                 StackPane square = new StackPane();
+                square.setMinSize((int)size,(int)size);
                 visualizationGridPane.add(square,j,i);
             }
     }
